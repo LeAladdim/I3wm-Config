@@ -1,0 +1,104 @@
+# Variáveis
+set $mod Mod4
+set $terminal xfce4-terminal
+
+# Fontes
+font pango:Noto Sans 8
+
+# Aparência e Gaps 
+gaps inner 10
+gaps outer 5
+
+default_border pixel 2
+default_floating_border pixel 2
+
+# Cores
+# class                 border  backgr. text    indicator child_border
+client.focused          #d65d0e #282828 #d65d0e #ebdbb2   #d65d0e
+client.unfocused        #3c3836 #282828 #928374 #458588   #3c3836
+client.focused_inactive #3c3836 #282828 #928374 #458588   #3c3836
+client.urgent           #fb4934 #fb4934 #282828 #fb4934   #fb4934
+
+# Remove a barra de título das janelas para um look mais limpo
+default_border pixel 2
+
+# Autostart
+exec_always --no-startup-id picom --config ~/.config/picom.conf
+exec --no-startup-id dunst
+exec_always --no-startup-id setxkbmap -model abnt2 -layout br
+exec_always --no-startup-id nitrogen --restore
+
+
+# Atalhos Principais
+# Lançar terminal
+bindsym $mod+Return exec $terminal
+
+# Matar janela focada
+bindsym $mod+Shift+q kill
+
+# Rofi
+bindsym $mod+d exec rofi -show drun
+
+# Aumentar volume com F9
+bindsym F9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Diminuir volume com F8
+bindsym F8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Mutar/desmutar volume com F7
+bindsym F7 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Mudar foco entre janelas
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Mover janela focada
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Mudar para workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+
+# Mover janela focada para um workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+
+bindsym $mod+f fullscreen toggle
+
+# Recarregar a configuração do i3
+bindsym $mod+Shift+c reload
+
+# Print 
+bindsym Print exec scrot ~/Imagens/prints/%Y-%m-%d-%H%M%S.png
+
+# Print de área
+bindsym Shift+Print exec scrot -s ~/Imagens/prints/%Y-%m-%d-%H%M%S.png
+
+
+
+
+# Sair do i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Você realmente quer sair do i3?' -B 'Sim, sair' 'i3-msg exit'"
+exec_always --no-startup-id feh --bg-fill '/home/aladdim/Downloads/Boco bataman PC escuro.jpg'
+
+#Redimensionar janela focada para 1/4 da tela
+# Superior Esquerda
+bindsym $mod+Ctrl+Left floating enable, resize set width 683 px height 384 px, move position 0 0
+# Superior Direto
+bindsym $mod+Ctrl+Right floating enable, resize set width 683 px height 384 px, move position 683 0
+# Inferior Esquerdo
+bindsym $mod+Ctrl+Down floating enable, resize set width 683 px height 384 px, move position 0 384
+# Inferior Direito
+bindsym $mod+Ctrl+Up floating enable, resize set width 683 px height 384 px, move position 683 384
+
