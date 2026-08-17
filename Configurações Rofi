@@ -1,0 +1,53 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    terminal: "xfce4-terminal";
+}
+
+* {
+    background-color: #1b1a1aff;    
+    foreground: #352f22ff;            
+    
+    selected-background: #d65d0eFF; 
+    selected-foreground: #4e4e4eff;   
+    
+    border-color: #030303ff;       
+}
+
+window {
+    /* --- BORDAS ARREDONDADAS e DIMENSÕES COMPACTAS --- */
+    width: 30%;            
+    padding: 15px;          
+    border-radius: 20px;   
+    border: 10px;           
+    location: center;     
+    anchor: center;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    padding: 10px;
+    border-radius: 8px;
+    border: 0; 
+    background-color: #000000ff;
+}
+
+listview {
+    lines: 8;          
+    columns: 1;        
+    spacing: 5px;      
+    border: 0;
+}
+
+element {
+    padding: 5px;
+    border-radius: 6px;
+}
+
+element selected {
+    background-color: @selected-background;
+    foreground: @selected-foreground;
+}
